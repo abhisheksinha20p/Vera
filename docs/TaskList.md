@@ -1,0 +1,170 @@
+# Vera - Project Task List
+
+## Phase 1: Project Setup & Infrastructure
+- [ ] Initialize project structure with frontend and backend directories
+- [ ] Set up Vite + React + TypeScript for frontend
+- [ ] Set up Node.js + Express + TypeScript for backend
+- [ ] Configure Tailwind CSS
+- [ ] Set up PostgreSQL database
+- [ ] Configure Prisma ORM with schema
+- [ ] Create Docker Compose configuration
+- [ ] Set up environment variables and secrets management
+
+---
+
+## Phase 2: Database Design & Setup
+- [ ] Create Prisma schema for User model
+- [ ] Create Prisma schema for Task model
+- [ ] Define relationships (User → Tasks)
+- [ ] Add proper indexing on `user_id`
+- [ ] Run initial migrations
+- [ ] Seed database with test data (optional)
+
+---
+
+## Phase 3: Backend - Authentication System
+- [ ] Create user registration endpoint (`POST /api/auth/register`)
+  - [ ] Email validation
+  - [ ] Password hashing with bcrypt
+  - [ ] Minimum password length validation
+- [ ] Create user login endpoint (`POST /api/auth/login`)
+  - [ ] Credential verification
+  - [ ] JWT token generation
+- [ ] Create logout endpoint (`POST /api/auth/logout`)
+- [ ] Implement JWT authentication middleware
+- [ ] Create protected route middleware
+- [ ] Add refresh token functionality (optional)
+
+---
+
+## Phase 4: Backend - Task Management API
+- [ ] Create task CRUD endpoints:
+  - [ ] `POST /api/tasks` - Create new task
+  - [ ] `GET /api/tasks` - Get all user tasks (sorted by creation time)
+  - [ ] `GET /api/tasks/:id` - Get single task
+  - [ ] `PUT /api/tasks/:id` - Update task
+  - [ ] `PATCH /api/tasks/:id/status` - Toggle task status
+  - [ ] `DELETE /api/tasks/:id` - Delete task
+- [ ] Implement user-task isolation (access control)
+- [ ] Add input validation using Zod
+- [ ] Implement proper error handling
+- [ ] Add proper API response codes
+
+---
+
+## Phase 5: Frontend - Core Setup & Routing
+- [ ] Set up React Router with routes:
+  - [ ] `/` - Landing/Home page
+  - [ ] `/login` - Login page
+  - [ ] `/register` - Registration page
+  - [ ] `/dashboard` - Main task dashboard (protected)
+- [ ] Create API service layer (Axios/Fetch)
+- [ ] Set up authentication context/state management
+- [ ] Implement protected route component
+
+---
+
+## Phase 6: Frontend - Authentication UI
+- [ ] Create Login page component
+  - [ ] Email input field
+  - [ ] Password input field
+  - [ ] Form validation with React Hook Form + Zod
+  - [ ] Error message display
+  - [ ] Loading states
+- [ ] Create Registration page component
+  - [ ] Email input field
+  - [ ] Password input field
+  - [ ] Confirm password field
+  - [ ] Form validation
+  - [ ] Success/Error handling
+- [ ] Implement JWT token storage and management
+- [ ] Add logout functionality
+
+---
+
+## Phase 7: Frontend - Dashboard & Task Management UI
+- [ ] Create Dashboard layout with sidebar navigation
+  - [ ] Logo/branding area
+  - [ ] Navigation menu (Dashboard, Tasks, Settings)
+  - [ ] User profile section
+- [ ] Create Task List component
+  - [ ] Display all tasks
+  - [ ] Empty state message ("No tasks yet")
+  - [ ] Loading skeleton
+- [ ] Create Task Item component
+  - [ ] Task title and description display
+  - [ ] Completion checkbox
+  - [ ] Edit button
+  - [ ] Delete button with confirmation
+  - [ ] Visual distinction for completed tasks
+- [ ] Create Add Task form/modal
+  - [ ] Title input (required)
+  - [ ] Description input (optional)
+  - [ ] Submit button
+- [ ] Create Edit Task modal
+- [ ] Implement task filtering (All/Pending/Completed)
+
+---
+
+## Phase 8: Frontend - Design Implementation
+- [ ] Implement color palette from Design.md
+  - [ ] Midnight Navy (`#03145F`)
+  - [ ] Electric Blue (`#4C56CF`)
+  - [ ] Soft Surface (`#F7F8FA`)
+  - [ ] Pure White (`#FFFFFF`)
+  - [ ] Slate Grey (`#9A898F`)
+  - [ ] Alert Red (`#FF4D4F`)
+- [ ] Set up typography (Inter/SF Pro Display)
+- [ ] Create button component variants (Primary/Secondary)
+- [ ] Create card components with subtle shadows
+- [ ] Implement hover effects and micro-animations
+- [ ] Add modal with glassmorphism backdrop
+- [ ] Ensure mobile-first responsive design
+
+---
+
+## Phase 9: Integration & Testing
+- [ ] Connect frontend to backend APIs
+- [ ] Test user registration flow
+- [ ] Test user login/logout flow
+- [ ] Test task CRUD operations
+- [ ] Test protected route access
+- [ ] Test mobile responsiveness
+- [ ] Verify task isolation between users
+
+---
+
+## Phase 10: DevOps & Deployment
+- [ ] Create Dockerfile for frontend
+- [ ] Create Dockerfile for backend
+- [ ] Configure Docker Compose for local development
+- [ ] Set up GitHub Actions CI/CD pipeline
+  - [ ] Run linting
+  - [ ] Run tests
+  - [ ] Build Docker images
+- [ ] Deploy frontend to Vercel/Netlify
+- [ ] Deploy backend to AWS (EC2/ECS)
+- [ ] Set up AWS RDS for PostgreSQL
+- [ ] Configure HTTPS and security headers
+
+---
+
+## Phase 11: Final Polish & Documentation
+- [ ] Write README.md with setup instructions
+- [ ] Add API documentation
+- [ ] Performance optimization (page load < 2s)
+- [ ] Final security review
+- [ ] Cross-browser testing
+- [ ] Create demo/sample data
+
+---
+
+## Future Enhancements (Post-MVP)
+- [ ] Task reminders and notifications
+- [ ] Due dates functionality
+- [ ] Priority levels
+- [ ] Dark mode toggle
+- [ ] Search functionality
+- [ ] Analytics dashboard
+- [ ] Calendar integration
+- [ ] Drag & drop task scheduling
