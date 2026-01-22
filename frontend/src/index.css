@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@theme {
+  --color-midnight-navy: #03145F;
+  --color-electric-blue: #4C56CF;
+  --color-soft-surface: #F7F8FA;
+  --color-pure-white: #FFFFFF;
+  --color-slate-grey: #9A898F;
+  --color-alert-red: #FF4D4F;
+
+  --font-sans: 'Inter', sans-serif;
+
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lift: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-midnight-navy bg-soft-surface;
+  }
+}

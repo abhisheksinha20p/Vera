@@ -65,61 +65,61 @@
 ---
 
 ## Phase 6: Frontend - Authentication UI
-- [ ] Create Login page component
-  - [ ] Email input field
-  - [ ] Password input field
-  - [ ] Form validation with React Hook Form + Zod
-  - [ ] Error message display
-  - [ ] Loading states
-- [ ] Create Registration page component
-  - [ ] Email input field
-  - [ ] Password input field
-  - [ ] Confirm password field
-  - [ ] Form validation
-  - [ ] Success/Error handling
-- [ ] Implement JWT token storage and management
-- [ ] Add logout functionality
+- [x] Create Login page component
+  - [x] Email input field
+  - [x] Password input field
+  - [x] Form validation with React Hook Form + Zod
+  - [x] Error message display
+  - [x] Loading states
+- [x] Create Registration page component
+  - [x] Email input field
+  - [x] Password input field
+  - [x] Confirm password field
+  - [x] Form validation
+  - [x] Success/Error handling
+- [x] Implement JWT token storage and management
+- [x] Add logout functionality
 
 ---
 
 ## Phase 7: Frontend - Dashboard & Task Management UI
-- [ ] Create Dashboard layout with sidebar navigation
-  - [ ] Logo/branding area
-  - [ ] Navigation menu (Dashboard, Tasks, Settings)
-  - [ ] User profile section
-- [ ] Create Task List component
-  - [ ] Display all tasks
-  - [ ] Empty state message ("No tasks yet")
-  - [ ] Loading skeleton
-- [ ] Create Task Item component
-  - [ ] Task title and description display
-  - [ ] Completion checkbox
-  - [ ] Edit button
-  - [ ] Delete button with confirmation
-  - [ ] Visual distinction for completed tasks
-- [ ] Create Add Task form/modal
-  - [ ] Title input (required)
-  - [ ] Description input (optional)
-  - [ ] Submit button
-- [ ] Create Edit Task modal
-- [ ] Implement task filtering (All/Pending/Completed)
+- [x] Create Dashboard layout with sidebar navigation
+  - [x] Logo/branding area
+  - [x] Navigation menu (Dashboard, Tasks, Settings)
+  - [x] User profile section
+- [x] Create Task List component
+  - [x] Display all tasks
+  - [x] Empty state message ("No tasks yet")
+  - [x] Loading skeleton
+- [x] Create Task Item component
+  - [x] Task title and description display
+  - [x] Completion checkbox
+  - [x] Edit button
+  - [x] Delete button with confirmation
+  - [x] Visual distinction for completed tasks
+- [x] Create Add Task form/modal
+  - [x] Title input (required)
+  - [x] Description input (optional)
+  - [x] Submit button
+- [x] Create Edit Task modal
+- [x] Implement task filtering (All/Pending/Completed)
 
 ---
 
 ## Phase 8: Frontend - Design Implementation
-- [ ] Implement color palette from Design.md
-  - [ ] Midnight Navy (`#03145F`)
-  - [ ] Electric Blue (`#4C56CF`)
-  - [ ] Soft Surface (`#F7F8FA`)
-  - [ ] Pure White (`#FFFFFF`)
-  - [ ] Slate Grey (`#9A898F`)
-  - [ ] Alert Red (`#FF4D4F`)
-- [ ] Set up typography (Inter/SF Pro Display)
-- [ ] Create button component variants (Primary/Secondary)
-- [ ] Create card components with subtle shadows
-- [ ] Implement hover effects and micro-animations
-- [ ] Add modal with glassmorphism backdrop
-- [ ] Ensure mobile-first responsive design
+- [x] Implement color palette from Design.md
+  - [x] Midnight Navy (`#03145F`)
+  - [x] Electric Blue (`#4C56CF`)
+  - [x] Soft Surface (`#F7F8FA`)
+  - [x] Pure White (`#FFFFFF`)
+  - [x] Slate Grey (`#9A898F`)
+  - [x] Alert Red (`#FF4D4F`)
+- [x] Set up typography (Inter/SF Pro Display)
+- [x] Create button component variants (Primary/Secondary)
+- [x] Create card components with subtle shadows
+- [x] Implement hover effects and micro-animations
+- [x] Add modal with glassmorphism backdrop
+- [x] Ensure mobile-first responsive design
 
 ---
 
