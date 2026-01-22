@@ -53,14 +53,14 @@
 ---
 
 ## Phase 5: Frontend - Core Setup & Routing
-- [ ] Set up React Router with routes:
-  - [ ] `/` - Landing/Home page
-  - [ ] `/login` - Login page
-  - [ ] `/register` - Registration page
-  - [ ] `/dashboard` - Main task dashboard (protected)
-- [ ] Create API service layer (Axios/Fetch)
-- [ ] Set up authentication context/state management
-- [ ] Implement protected route component
+- [x] Set up React Router with routes:
+  - [x] `/` - Landing/Home page
+  - [x] `/login` - Login page
+  - [x] `/register` - Registration page
+  - [x] `/dashboard` - Main task dashboard (protected)
+- [x] Create API service layer (Axios/Fetch)
+- [x] Set up authentication context/state management
+- [x] Implement protected route component
 
 ---
 
