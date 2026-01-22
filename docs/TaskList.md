@@ -1,23 +1,23 @@
 # Vera - Project Task List
 
 ## Phase 1: Project Setup & Infrastructure
-- [ ] Initialize project structure with frontend and backend directories
-- [ ] Set up Vite + React + TypeScript for frontend
-- [ ] Set up Node.js + Express + TypeScript for backend
-- [ ] Configure Tailwind CSS
-- [ ] Set up PostgreSQL database
-- [ ] Configure Prisma ORM with schema
-- [ ] Create Docker Compose configuration
-- [ ] Set up environment variables and secrets management
+- [x] Initialize project structure with frontend and backend directories
+- [x] Set up Vite + React + TypeScript for frontend
+- [x] Set up Node.js + Express + TypeScript for backend
+- [x] Configure Tailwind CSS
+- [x] Set up PostgreSQL database
+- [x] Configure Prisma ORM with schema
+- [x] Create Docker Compose configuration
+- [x] Set up environment variables and secrets management
 
 ---
 
 ## Phase 2: Database Design & Setup
-- [ ] Create Prisma schema for User model
-- [ ] Create Prisma schema for Task model
-- [ ] Define relationships (User → Tasks)
-- [ ] Add proper indexing on `user_id`
-- [ ] Run initial migrations
+- [x] Create Prisma schema for User model
+- [x] Create Prisma schema for Task model
+- [x] Define relationships (User → Tasks)
+- [x] Add proper indexing on `user_id`
+- [x] Run initial migrations
 - [ ] Seed database with test data (optional)
 
 ---
