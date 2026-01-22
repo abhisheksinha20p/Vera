@@ -1,6 +1,6 @@
 # Todo App
 
-A modern, full-stack todo application built with React, Node.js, and PostgreSQL. Features user authentication, task management, and a responsive design.
+A modern, full-stack todo application built with React, Node.js, and MongoDB. Features user authentication, task management, and a responsive design.
 
 ## 🚀 Features
 
@@ -8,7 +8,7 @@ A modern, full-stack todo application built with React, Node.js, and PostgreSQL.
 - **Task Management**: Create, read, update, and delete tasks
 - **Responsive Design**: Built with Tailwind CSS for mobile-first design
 - **Type Safety**: Full TypeScript implementation across frontend and backend
-- **Database**: PostgreSQL with Prisma ORM for type-safe database operations
+- **Database**: MongoDB with Mongoose ODM for schema-based data modeling
 - **Containerized**: Docker Compose setup for easy development
 
 ## 🛠 Tech Stack
@@ -26,15 +26,15 @@ A modern, full-stack todo application built with React, Node.js, and PostgreSQL.
 - **Node.js** - Runtime environment
 - **Express** - Web framework
 - **TypeScript** - Type safety
-- **Prisma** - Database ORM
+- **Mongoose** - MongoDB ODM
 - **JWT** - Authentication
 - **bcrypt** - Password hashing
 - **CORS** - Cross-origin resource sharing
 
 ### Database
 
-- **PostgreSQL** - Primary database
-- **Prisma** - Database toolkit and ORM
+- **MongoDB** - Primary NoSQL database
+- **Mongoose** - MongoDB object modeling
 
 ### DevOps
 
@@ -46,7 +46,7 @@ A modern, full-stack todo application built with React, Node.js, and PostgreSQL.
 - **Node.js** v18 or higher
 - **npm** or **yarn**
 - **Docker** and **Docker Compose** (for containerized setup)
-- **PostgreSQL** (if running without Docker)
+- **MongoDB** (if running without Docker)
 
 ## 🚀 Quick Start
 
@@ -93,18 +93,16 @@ A modern, full-stack todo application built with React, Node.js, and PostgreSQL.
    # Edit .env with your database configuration
    ```
 
-4. **Start PostgreSQL** (if not using Docker)
+4. **Start MongoDB** (if not using Docker)
 
    ```bash
    # Using Docker for database only
-   docker run --name postgres -e POSTGRES_PASSWORD=vera_password -e POSTGRES_USER=vera_user -e POSTGRES_DB=vera_db -p 5432:5432 -d postgres:15-alpine
+   docker run --name mongodb -p 27017:27017 -d mongo:7-alpine
    ```
 
-5. **Run database migrations**
+5. **Connect to MongoDB**
 
-   ```bash
-   npx prisma migrate dev
-   ```
+   MongoDB doesn't require migrations - schemas are defined in Mongoose models.
 
 6. **Start the development server**
 
@@ -137,7 +135,7 @@ A modern, full-stack todo application built with React, Node.js, and PostgreSQL.
 ```text
 todo_app_Vera/
 ├── backend/                 # Node.js/Express API
-│   ├── prisma/             # Database schema and migrations
+│   ├── models/             # Mongoose schemas and models
 │   ├── src/                # Source code
 │   │   ├── config/         # Configuration files
 │   │   ├── controllers/    # Route controllers
@@ -163,7 +161,7 @@ todo_app_Vera/
 
 ## 🗄 Database Schema
 
-The application uses PostgreSQL with the following main entities:
+The application uses MongoDB with the following main collections:
 
 - **Users**: Authentication and user management
 - **Tasks**: Todo items with completion status
@@ -191,8 +189,7 @@ The application uses PostgreSQL with the following main entities:
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build for production
 - `npm start` - Start production server
-- `npx prisma studio` - Open Prisma Studio (database GUI)
-- `npx prisma migrate dev` - Run database migrations
+- `npx mongosh` - Open MongoDB shell (if installed locally)
 
 #### Frontend Scripts
 
@@ -206,7 +203,7 @@ The application uses PostgreSQL with the following main entities:
 Create a `.env` file in the backend directory:
 
 ```env
-DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
+MONGODB_URI="mongodb://localhost:27017/vera_db"
 JWT_SECRET="your-secure-jwt-secret-key-here"
 PORT=3000
 ```
