@@ -1,18 +1,14 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15-alpine
-    container_name: vera_postgres
+  mongodb:
+    image: mongo:latest
+    container_name: vera_mongodb
     restart: always
-    environment:
-      POSTGRES_USER: vera_user
-      POSTGRES_PASSWORD: vera_password
-      POSTGRES_DB: vera_db
     ports:
-      - "5432:5432"
+      - "27017:27017"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongodb_data:/data/db
 
 volumes:
-  postgres_data:
+  mongodb_data:

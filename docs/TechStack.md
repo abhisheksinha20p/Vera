@@ -54,17 +54,18 @@
 
 ### Primary Database
 
-- **PostgreSQL** – Reliable, scalable relational DB
+- **MongoDB** – Flexible, scalable NoSQL database
 
-### ORM / Query Layer
+### ODM / Query Layer
 
-- **Prisma ORM** – Type-safe DB access and migrations
+- **Mongoose** – Schema-based MongoDB object modeling
 
-### Why PostgreSQL
+### Why MongoDB
 
-- Strong relational modeling
-- Production-grade
-- Widely used in SaaS products
+- Flexible schema for rapid development
+- Easy Docker setup
+- JSON-like documents match JavaScript objects
+- Widely used in modern web applications
 
 ---
 
@@ -111,7 +112,7 @@
 ### Flow
 
 ```
-React UI → API calls → Express API → Auth middleware → PostgreSQL via Prisma
+React UI → API calls → Express API → Auth middleware → MongoDB via Mongoose
 ```
 
 - JWT validates user identity
@@ -135,7 +136,7 @@ vera/
 │   ├── routes/
 │   ├── controllers/
 │   ├── middleware/
-│   └── prisma/
+│   └── models/
 │
 ├── docker-compose.yml
 └── README.md

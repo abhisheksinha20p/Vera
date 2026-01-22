@@ -5,34 +5,34 @@
 - [x] Set up Vite + React + TypeScript for frontend
 - [x] Set up Node.js + Express + TypeScript for backend
 - [x] Configure Tailwind CSS
-- [x] Set up PostgreSQL database
-- [x] Configure Prisma ORM with schema
+- [x] Set up MongoDB database
+- [x] Configure Mongoose ODM with schemas
 - [x] Create Docker Compose configuration
 - [x] Set up environment variables and secrets management
 
 ---
 
 ## Phase 2: Database Design & Setup
-- [x] Create Prisma schema for User model
-- [x] Create Prisma schema for Task model
-- [x] Define relationships (User → Tasks)
-- [x] Add proper indexing on `user_id`
-- [x] Run initial migrations
+- [x] Create Mongoose schema for User model
+- [x] Create Mongoose schema for Task model
+- [x] Define relationships (User → Tasks via references)
+- [x] Add proper indexing on `userId`
+- [x] Test database connection
 - [ ] Seed database with test data (optional)
 
 ---
 
 ## Phase 3: Backend - Authentication System
-- [ ] Create user registration endpoint (`POST /api/auth/register`)
-  - [ ] Email validation
-  - [ ] Password hashing with bcrypt
-  - [ ] Minimum password length validation
-- [ ] Create user login endpoint (`POST /api/auth/login`)
-  - [ ] Credential verification
-  - [ ] JWT token generation
-- [ ] Create logout endpoint (`POST /api/auth/logout`)
-- [ ] Implement JWT authentication middleware
-- [ ] Create protected route middleware
+- [x] Create user registration endpoint (`POST /api/auth/register`)
+  - [x] Email validation
+  - [x] Password hashing with bcrypt
+  - [x] Minimum password length validation
+- [x] Create user login endpoint (`POST /api/auth/login`)
+  - [x] Credential verification
+  - [x] JWT token generation
+- [x] Create logout endpoint (`POST /api/auth/logout`)
+- [x] Implement JWT authentication middleware
+- [x] Create protected route middleware
 - [ ] Add refresh token functionality (optional)
 
 ---
@@ -144,7 +144,7 @@
   - [ ] Build Docker images
 - [ ] Deploy frontend to Vercel/Netlify
 - [ ] Deploy backend to AWS (EC2/ECS)
-- [ ] Set up AWS RDS for PostgreSQL
+- [ ] Set up MongoDB Atlas (or self-hosted MongoDB)
 - [ ] Configure HTTPS and security headers
 
 ---
