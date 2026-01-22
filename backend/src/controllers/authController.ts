@@ -1,11 +1,27 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { z } from 'zod'; // Import Zod
 import User from '../models/User';
 import { authConfig } from '../config/auth';
 
-// Email validation regex
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Zod Schemas
+const registerSchema = z.object({
+  email: z.string()
+    .transform(val => val.toLowerCase().trim())
+    .pipe(z.string().email('Valid email is required')), // Transform then validate
+  password: z.string()
+    .min(authConfig.minPasswordLength, `Password must be at least ${authConfig.minPasswordLength} characters`)
+    .refine(val => !val.includes('password'), { message: "Password cannot contain the word 'password'" }),
+  name: z.string().optional().transform(val => val?.trim()),
+});
+
+const loginSchema = z.object({
+  email: z.string()
+    .transform(val => val.toLowerCase().trim())
+    .pipe(z.string().email('Valid email is required')),
+  password: z.string().min(1, 'Password is required'),
+});
 
 /**
  * Register a new user
@@ -13,21 +29,16 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  */
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { email, password, name } = req.body;
+    // Validate input using Zod safeParse
+    const validation = registerSchema.safeParse(req.body);
 
-    // Validate email
-    if (!email || !emailRegex.test(email)) {
-      res.status(400).json({ error: 'Valid email is required' });
+    if (!validation.success) {
+      // Return first error message
+      res.status(400).json({ error: validation.error.errors[0].message });
       return;
     }
 
-    // Validate password
-    if (!password || password.length < authConfig.minPasswordLength) {
-      res.status(400).json({ 
-        error: `Password must be at least ${authConfig.minPasswordLength} characters` 
-      });
-      return;
-    }
+    const { email, password, name } = validation.data;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -69,13 +80,15 @@ export const register = async (req: Request, res: Response): Promise<void> => {
  */
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { email, password } = req.body;
+    // Validate input using Zod safeParse
+    const validation = loginSchema.safeParse(req.body);
 
-    // Validate input
-    if (!email || !password) {
-      res.status(400).json({ error: 'Email and password are required' });
+    if (!validation.success) {
+      res.status(400).json({ error: validation.error.errors[0].message });
       return;
     }
+
+    const { email, password } = validation.data;
 
     // Find user
     const user = await User.findOne({ email });

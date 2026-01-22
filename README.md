@@ -9,6 +9,7 @@ A modern, full-stack todo application built with React, Node.js, and MongoDB. Fe
 - **Responsive Design**: Built with Tailwind CSS for mobile-first design
 - **Type Safety**: Full TypeScript implementation across frontend and backend
 - **Database**: MongoDB with Mongoose ODM for schema-based data modeling
+- **Validation**: Strong input validation using Zod schemas
 - **Containerized**: Docker Compose setup for easy development
 
 ## 🛠 Tech Stack
