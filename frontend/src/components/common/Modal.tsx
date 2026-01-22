@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
-import { cn } from '../../lib/utils';
 import { Button } from './Button';
 
 interface ModalProps {
@@ -25,9 +24,9 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md p-4 animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-lg rounded-lg bg-white p-6 shadow-xl animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-lg rounded-xl bg-pure-white p-6 shadow-2xl animate-in zoom-in-95 duration-200 border border-gray-100"
         role="dialog"
         aria-modal="true"
       >
