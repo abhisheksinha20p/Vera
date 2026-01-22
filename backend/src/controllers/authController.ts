@@ -13,7 +13,7 @@ const registerSchema = z.object({
   password: z.string()
     .min(authConfig.minPasswordLength, `Password must be at least ${authConfig.minPasswordLength} characters`)
     .refine(val => !val.includes('password'), { message: "Password cannot contain the word 'password'" }),
-  name: z.string().optional().transform(val => val?.trim()),
+  name: z.string().min(1, 'Name is required').transform(val => val.trim()),
 });
 
 const loginSchema = z.object({
