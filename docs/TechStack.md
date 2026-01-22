@@ -46,7 +46,7 @@
 - User authentication (register/login)
 - Task CRUD APIs
 - Authorization & access control
-- Input validation & error handling
+- Input validation (Zod) & error handling
 
 ---
 
@@ -103,7 +103,7 @@
 |--------------------|-----------------------------------------|
 | Frontend Hosting   | Vercel or Netlify                       |
 | Backend Hosting    | AWS (EC2 or ECS, Docker-based, behind Nginx) |
-| Database Hosting   | AWS RDS (PostgreSQL)                    |
+| Database Hosting   | MongoDB Atlas (or self-hosted)          |
 
 ---
 

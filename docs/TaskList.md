@@ -38,17 +38,17 @@
 ---
 
 ## Phase 4: Backend - Task Management API
-- [ ] Create task CRUD endpoints:
-  - [ ] `POST /api/tasks` - Create new task
-  - [ ] `GET /api/tasks` - Get all user tasks (sorted by creation time)
-  - [ ] `GET /api/tasks/:id` - Get single task
-  - [ ] `PUT /api/tasks/:id` - Update task
-  - [ ] `PATCH /api/tasks/:id/status` - Toggle task status
-  - [ ] `DELETE /api/tasks/:id` - Delete task
-- [ ] Implement user-task isolation (access control)
-- [ ] Add input validation using Zod
-- [ ] Implement proper error handling
-- [ ] Add proper API response codes
+- [x] Create task CRUD endpoints:
+  - [x] `POST /api/tasks` - Create new task
+  - [x] `GET /api/tasks` - Get all user tasks (sorted by creation time)
+  - [x] `GET /api/tasks/:id` - Get single task
+  - [x] `PUT /api/tasks/:id` - Update task
+  - [x] `PATCH /api/tasks/:id/status` - Toggle task status (handled via PUT)
+  - [x] `DELETE /api/tasks/:id` - Delete task
+- [x] Implement user-task isolation (access control)
+- [x] Add input validation using Zod
+- [x] Implement proper error handling
+- [x] Add proper API response codes
 
 ---
 
