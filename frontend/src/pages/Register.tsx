@@ -9,7 +9,7 @@ import { Input } from '../components/common/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/common/Card';
 
 const registerSchema = z.object({
-  name: z.string().optional(),
+  name: z.string().min(1, 'Full Name is required'),
   email: z.string().email('Please enter a valid email address'),
   password: z.string()
     .min(8, 'Password must be at least 8 characters')
@@ -72,7 +72,7 @@ const Register = () => {
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-4">
               <Input
-                label="Full Name (Optional)"
+                label="Full Name"
                 type="text"
                 autoComplete="name"
                 placeholder="John Doe"
