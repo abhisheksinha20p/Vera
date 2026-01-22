@@ -1,49 +1,87 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { Button } from '../components/common/Button';
+import { Input } from '../components/common/Input';
+import { Loader2 } from 'lucide-react';
+
+const loginSchema = z.object({
+  email: z.string().email('Please enter a valid email address'),
+  password: z.string().min(1, 'Password is required'),
+});
+
+type LoginSchema = z.infer<typeof loginSchema>;
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [serverError, setServerError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginSchema) => {
+    setServerError('');
     try {
-      await login({ email, password });
+      await login(data);
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Login failed');
+      setServerError(err.response?.data?.error || 'Login failed. Please try again.');
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-64">
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Login</button>
-      </form>
-      <div className="mt-4">
-        Need an account? <Link to="/register" className="text-blue-500">Register</Link>
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-md">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900">Sign in to Vera</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Or{' '}
+            <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
+              create a new account
+            </Link>
+          </p>
+        </div>
+
+        {serverError && (
+          <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+            {serverError}
+          </div>
+        )}
+
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-4">
+            <Input
+              label="Email address"
+              type="email"
+              autoComplete="email"
+              placeholder="you@example.com"
+              error={errors.email?.message}
+              {...register('email')}
+            />
+
+            <Input
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="••••••••"
+              error={errors.password?.message}
+              {...register('password')}
+            />
+          </div>
+
+          <Button type="submit" className="w-full" isLoading={isSubmitting}>
+            Sign in
+          </Button>
+        </form>
       </div>
     </div>
   );
