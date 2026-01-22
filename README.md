@@ -1,0 +1,245 @@
+# Todo App
+
+A modern, full-stack todo application built with React, Node.js, and PostgreSQL. Features user authentication, task management, and a responsive design.
+
+## 🚀 Features
+
+- **User Authentication**: Secure JWT-based authentication with bcrypt password hashing
+- **Task Management**: Create, read, update, and delete tasks
+- **Responsive Design**: Built with Tailwind CSS for mobile-first design
+- **Type Safety**: Full TypeScript implementation across frontend and backend
+- **Database**: PostgreSQL with Prisma ORM for type-safe database operations
+- **Containerized**: Docker Compose setup for easy development
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **ESLint** - Code linting
+
+### Backend
+
+- **Node.js** - Runtime environment
+- **Express** - Web framework
+- **TypeScript** - Type safety
+- **Prisma** - Database ORM
+- **JWT** - Authentication
+- **bcrypt** - Password hashing
+- **CORS** - Cross-origin resource sharing
+
+### Database
+
+- **PostgreSQL** - Primary database
+- **Prisma** - Database toolkit and ORM
+
+### DevOps
+
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container orchestration
+
+## 📋 Prerequisites
+
+- **Node.js** v18 or higher
+- **npm** or **yarn**
+- **Docker** and **Docker Compose** (for containerized setup)
+- **PostgreSQL** (if running without Docker)
+
+## 🚀 Quick Start
+
+### Option 1: Docker Compose (Recommended)
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd todo_app_Vera
+   ```
+
+2. **Start all services**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the application**
+
+   - Frontend: <http://localhost:5173>
+   - Backend API: <http://localhost:3000>
+
+### Option 2: Local Development
+
+#### Backend Setup
+
+1. **Navigate to backend directory**
+
+   ```bash
+   cd backend
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your database configuration
+   ```
+
+4. **Start PostgreSQL** (if not using Docker)
+
+   ```bash
+   # Using Docker for database only
+   docker run --name postgres -e POSTGRES_PASSWORD=vera_password -e POSTGRES_USER=vera_user -e POSTGRES_DB=vera_db -p 5432:5432 -d postgres:15-alpine
+   ```
+
+5. **Run database migrations**
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+6. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+#### Frontend Setup
+
+1. **Navigate to frontend directory**
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+## 📁 Project Structure
+
+```text
+todo_app_Vera/
+├── backend/                 # Node.js/Express API
+│   ├── prisma/             # Database schema and migrations
+│   ├── src/                # Source code
+│   │   ├── config/         # Configuration files
+│   │   ├── controllers/    # Route controllers
+│   │   ├── middleware/     # Express middleware
+│   │   ├── routes/         # API routes
+│   │   ├── utils/          # Utility functions
+│   │   └── index.ts        # Application entry point
+│   └── package.json        # Backend dependencies
+├── frontend/               # React application
+│   ├── src/                # Source code
+│   │   ├── assets/         # Static assets
+│   │   ├── App.tsx         # Main App component
+│   │   └── main.tsx        # Application entry point
+│   └── package.json        # Frontend dependencies
+├── docs/                   # Project documentation
+│   ├── Design.md           # Design specifications
+│   ├── PRD.md              # Product requirements
+│   ├── TaskList.md         # Development tasks
+│   └── TechStack.md        # Technical specifications
+├── docker-compose.yml      # Docker services configuration
+└── README.md               # This file
+```
+
+## 🗄 Database Schema
+
+The application uses PostgreSQL with the following main entities:
+
+- **Users**: Authentication and user management
+- **Tasks**: Todo items with completion status
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+
+### Task Endpoints
+
+- `GET /api/tasks` - Get user's tasks
+- `POST /api/tasks` - Create new task
+- `PUT /api/tasks/:id` - Update task
+- `DELETE /api/tasks/:id` - Delete task
+
+## 🧪 Development
+
+### Available Scripts
+
+#### Backend Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npx prisma studio` - Open Prisma Studio (database GUI)
+- `npx prisma migrate dev` - Run database migrations
+
+#### Frontend Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Environment Variables
+
+Create a `.env` file in the backend directory:
+
+```env
+DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
+JWT_SECRET="your-secure-jwt-secret-key-here"
+PORT=3000
+```
+
+## 📖 Documentation
+
+Detailed documentation is available in the `docs/` directory:
+
+- **[Design.md](docs/Design.md)** - UI/UX design specifications
+- **[PRD.md](docs/PRD.md)** - Product requirements document
+- **[TaskList.md](docs/TaskList.md)** - Development task tracking
+- **[TechStack.md](docs/TechStack.md)** - Technical architecture details
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions, please:
+
+1. Check the [documentation](docs/)
+2. Search existing [issues](../../issues)
+3. Create a new [issue](../../issues/new) if needed
+
+---
+
+Built with ❤️ using modern web technologies
