@@ -107,19 +107,19 @@
 ---
 
 ## Phase 8: Frontend - Design Implementation
-- [x] Implement color palette from Design.md
-  - [x] Midnight Navy (`#03145F`)
-  - [x] Electric Blue (`#4C56CF`)
-  - [x] Soft Surface (`#F7F8FA`)
-  - [x] Pure White (`#FFFFFF`)
-  - [x] Slate Grey (`#9A898F`)
-  - [x] Alert Red (`#FF4D4F`)
-- [x] Set up typography (Inter/SF Pro Display)
-- [x] Create button component variants (Primary/Secondary)
-- [x] Create card components with subtle shadows
-- [x] Implement hover effects and micro-animations
-- [x] Add modal with glassmorphism backdrop
-- [x] Ensure mobile-first responsive design
+- [ ] Implement color palette from Design.md
+  - [ ] Midnight Navy (`#03145F`)
+  - [ ] Electric Blue (`#4C56CF`)
+  - [ ] Soft Surface (`#F7F8FA`)
+  - [ ] Pure White (`#FFFFFF`)
+  - [ ] Slate Grey (`#9A898F`)
+  - [ ] Alert Red (`#FF4D4F`)
+- [ ] Set up typography (Inter/SF Pro Display)
+- [ ] Create button component variants (Primary/Secondary)
+- [ ] Create card components with subtle shadows
+- [ ] Implement hover effects and micro-animations
+- [ ] Add modal with glassmorphism backdrop
+- [ ] Ensure mobile-first responsive design
 
 ---
 
