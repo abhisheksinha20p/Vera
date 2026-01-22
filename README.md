@@ -148,6 +148,16 @@ todo_app_Vera/
 ├── frontend/               # React application
 │   ├── src/                # Source code
 │   │   ├── assets/         # Static assets
+│   │   ├── components/     # UI Components
+│   │   │   ├── common/     # Reusable (Button, Input, Modal, etc.)
+│   │   │   ├── layout/     # Layout components (DashboardLayout)
+│   │   │   └── tasks/      # Task-specific components
+│   │   ├── context/        # React Context (AuthContext)
+│   │   ├── hooks/          # Custom Hooks (useTasks)
+│   │   ├── lib/            # Utilities (tailwind-merge)
+│   │   ├── pages/          # Page components (Login, Register, Dashboard)
+│   │   ├── services/       # API services
+│   │   ├── types/          # TypeScript types
 │   │   ├── App.tsx         # Main App component
 │   │   └── main.tsx        # Application entry point
 │   └── package.json        # Frontend dependencies
