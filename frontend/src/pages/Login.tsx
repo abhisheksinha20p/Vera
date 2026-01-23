@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/common/Card';
@@ -33,8 +33,9 @@ const Login = () => {
     try {
       await login(data);
       navigate('/dashboard');
-    } catch (err: any) {
-      setServerError(err.response?.data?.error || 'Login failed. Please try again.');
+    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setServerError((err as any).response?.data?.error || 'Login failed. Please try again.');
     }
   };
 
