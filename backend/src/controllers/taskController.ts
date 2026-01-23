@@ -2,20 +2,26 @@ import { Request, Response } from 'express';
 import { z } from 'zod';
 import Task from '../models/Task';
 
+// Helper for permissive date parsing
+const permissiveDate = z.preprocess((arg) => {
+  if (typeof arg === 'string' && arg.trim() === '') return undefined;
+  return arg;
+}, z.coerce.date().optional());
+
 // Validation schemas
 const createTaskSchema = z.object({
   title: z.string().min(1, 'Title is required').trim(),
   description: z.string().optional().default(''),
-  startTime: z.coerce.date().optional(),
-  endTime: z.coerce.date().optional(),
+  startTime: permissiveDate,
+  endTime: permissiveDate,
 });
 
 const updateTaskSchema = z.object({
   title: z.string().min(1, 'Title is required').trim().optional(),
   description: z.string().optional(),
   isCompleted: z.boolean().optional(),
-  startTime: z.coerce.date().optional(),
-  endTime: z.coerce.date().optional(),
+  startTime: permissiveDate,
+  endTime: permissiveDate,
 });
 
 /**
