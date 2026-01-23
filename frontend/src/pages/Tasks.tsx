@@ -20,7 +20,7 @@ const TasksPage = () => {
     try {
       await createTask(data);
       setIsModalOpen(false);
-    } catch (error) {
+    } catch {
        // Error handled
     }
   };
@@ -31,7 +31,7 @@ const TasksPage = () => {
       await updateTask(editingTask._id, data);
       setIsModalOpen(false);
       setEditingTask(null);
-    } catch (error) {
+    } catch {
        // Error handled
     }
   };

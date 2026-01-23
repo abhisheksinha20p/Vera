@@ -7,8 +7,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
-import { cn } from "../../utils/cn"; // Assuming we have utils or I'll implement clsx inline
+import { useAuth } from "../../hooks/useAuth";
 
 interface SidebarProps {
   className?: string;

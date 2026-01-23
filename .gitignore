@@ -1,0 +1,5 @@
+logs_*
+logs_55204721924/
+node_modules/
+.env
+.DS_Store
