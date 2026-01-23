@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CalendarPage from './pages/Calendar';
+import TasksPage from './pages/Tasks';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
           </Route>
         </Routes>
       </Router>

@@ -32,12 +32,12 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
     - [x] (Advanced) Resize to adjust duration
 
 ## Phase 3: Dashboard Overhaul
-- [ ] **Summary View**
-    - [ ] Display "Today's Date" prominently
-    - [ ] Show "Upcoming Tasks" (Limited list, e.g., next 3-5 items)
-    - [ ] Create "Quick Add" input field (Inline task creation)
-- [ ] **Empty States**
-    - [ ] Design "Calm" empty state when no tasks exist today
+- [x] **Summary View**
+    - [x] Display "Today's Date" prominently
+    - [x] Show "Upcoming Tasks" (Limited list, e.g., next 3-5 items)
+    - [x] Create "Quick Add" input field (Inline task creation)
+- [x] **Empty States**
+    - [x] Design "Calm" empty state when no tasks exist today
 
 ## Phase 4: Task Management Polish
 - [x] **Task Card Design**
