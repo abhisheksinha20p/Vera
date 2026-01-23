@@ -6,6 +6,8 @@ export interface Task {
   description?: string;
   isCompleted: boolean;
   userId: string;
+  startTime?: string; // ISO date string from backend
+  endTime?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -13,12 +15,16 @@ export interface Task {
 export interface CreateTaskData {
   title: string;
   description?: string;
+  startTime?: string;
+  endTime?: string;
 }
 
 export interface UpdateTaskData {
   title?: string;
   description?: string;
   isCompleted?: boolean;
+  startTime?: string;
+  endTime?: string;
 }
 
 export const taskService = {

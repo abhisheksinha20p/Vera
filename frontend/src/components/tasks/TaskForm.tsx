@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 const taskSchema = z.object({
   title: z.string().min(1, 'Title is required').max(100, 'Title is too long'),
   description: z.string().optional(),
+  startTime: z.string().optional(),
+  endTime: z.string().optional(),
 });
 
 export type TaskFormData = z.infer<typeof taskSchema>;
@@ -62,6 +64,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, onSubmit, isL
         error={errors.description?.message}
         {...register('description')}
       />
+
+      <div className="grid grid-cols-2 gap-4">
+        <Input
+          label="Start Time (Optional)"
+          type="datetime-local"
+          error={errors.startTime?.message}
+          {...register('startTime')}
+        />
+        <Input
+          label="End Time (Optional)"
+          type="datetime-local"
+          error={errors.endTime?.message}
+          {...register('endTime')}
+        />
+      </div>
 
       <div className="flex justify-end space-x-2 pt-2">
         <Button type="button" variant="ghost" onClick={onCancel}>

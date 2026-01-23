@@ -5,6 +5,8 @@ export interface ITask extends Document {
   description?: string;
   isCompleted: boolean;
   userId: mongoose.Types.ObjectId;
+  startTime?: Date;
+  endTime?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -28,6 +30,14 @@ const TaskSchema: Schema = new Schema({
     ref: 'User',
     required: true,
     index: true,
+  },
+  startTime: {
+    type: Date,
+    default: null,
+  },
+  endTime: {
+    type: Date,
+    default: null,
   },
 }, {
   timestamps: true,

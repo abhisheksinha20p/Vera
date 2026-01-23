@@ -1,50 +1,55 @@
-import React from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { Button } from '../common/Button';
-import { LogOut } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+
+import React, { useState } from 'react';
+import { Sidebar } from './Sidebar';
+import { Header } from './Header';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
+  title?: string; // Optional title for the header
+  headerActions?: React.ReactNode;
 }
 
-export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
+export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title, headerActions }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-soft-surface font-sans text-midnight-navy">
-      <nav className="bg-pure-white border-b border-gray-100 shadow-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link to="/dashboard" className="text-xl font-bold text-blue-600">
-                  Vera
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-gray-700">
-                {user?.name || user?.email}
-              </div>
-              <Button variant="ghost" size="sm" onClick={handleLogout} className="text-gray-500 hover:text-red-600">
-                <LogOut className="h-4 w-4 mr-2" />
-                Logout
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-soft-surface font-sans text-midnight-navy flex">
+      {/* Sidebar for Desktop */}
+      <Sidebar className="hidden lg:flex" />
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        {children}
-      </main>
+      {/* Mobile Drawer (Overlay) */}
+      <div className={`fixed inset-0 z-30 lg:hidden pointer-events-none`}>
+         {/* Backdrop */}
+         <div 
+            className={`absolute inset-0 bg-black/50 transition-opacity duration-300 pointer-events-auto ${
+              isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            onClick={() => setIsSidebarOpen(false)}
+         />
+         {/* Sidebar */}
+         <div 
+            className={`absolute left-0 top-0 bottom-0 w-64 bg-midnight-navy shadow-xl transition-transform duration-300 pointer-events-auto ${
+              isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
+         >
+            <Sidebar />
+         </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col lg:pl-64 min-h-screen transition-all duration-300">
+        <Header 
+          onMenuClick={() => setIsSidebarOpen(true)} 
+          title={title}
+          actions={headerActions}
+        />
+        
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+          <div className="max-w-7xl mx-auto h-full">
+            {children}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

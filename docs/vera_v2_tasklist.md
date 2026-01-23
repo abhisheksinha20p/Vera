@@ -2,28 +2,30 @@
 Based on [Comprehensive Design Document](vera_new_design_document.md)
 
 ## Phase 1: Core Layout & Shell Refinement
-- [ ] **App Shell**
-    - [ ] Inspect/Update Sidebar width (Fixed 240-280px) & Color (Deep Navy)
-    - [ ] Create Global Header (Date, View Toggle, key actions)
-    - [ ] Ensure Main Content area is full-height and scrollable
-- [ ] **Navigation**
-    - [ ] Update Sidebar links: Dashboard, Calendar, Tasks, Settings
-    - [ ] Implement "Active" state visualization (Electric Blue highlight)
-- [ ] **Mobile Responsive**
-    - [ ] Implement Drawer Navigation (Hamburger menu) for mobile
-    - [ ] Ensure Sidebar collapses/hides on small screens
+- [x] **App Shell**
+    - [x] Inspect/Update Sidebar width (Fixed 240-280px) & Color (Deep Navy)
+    - [x] Create Global Header (Date, View Toggle, key actions)
+    - [x] Ensure Main Content area is full-height and scrollable
+- [x] **Navigation**
+    - [x] Update Sidebar links: Dashboard, Calendar, Tasks, Settings
+    - [x] Implement "Active" state visualization (Electric Blue highlight)
+- [x] **Mobile Responsive**
+    - [x] Implement Drawer Navigation (Hamburger menu) for mobile
+    - [x] Ensure Sidebar collapses/hides on small screens
 
 ## Phase 2: Calendar Feature (New Primary Feature)
-- [ ] **Calendar Foundation**
-    - [ ] Select React Calendar library (e.g., `react-big-calendar` or `fullcalendar`)
-    - [ ] Create `Calendar` page route
+- [x] **Calendar Foundation**
+    - [x] Select React Calendar library (e.g., `react-big-calendar` or `fullcalendar`)
+    - [x] Create `Calendar` page route
 - [ ] **Calendar Views**
-    - [ ] Implement **Month View** (Grid layout)
-    - [ ] Implement **Day View** (Timeline layout)
-    - [ ] Add View Toggle (Day/Week/Month)
-- [ ] **Task Integration**
-    - [ ] Display Task Cards within calendar time slots
-    - [ ] Differentiate "Time-bound" vs "All-day/Unscheduled" tasks
+    - [x] Implement **Month View** (Grid layout)
+    - [x] Implement **Day View** (Timeline layout)
+    - [x] Add View Toggle (Day/Week/Month)
+    - [x] Implement Navigation (Next/Today/Back) & Clock
+- [x] **Task Integration**
+    - [x] Display Task Cards within calendar time slots
+    - [x] Differentiate "Time-bound" vs "All-day/Unscheduled" tasks
+    - [x] Auto-schedule tasks to "Now" if time not provided
 - [ ] **Interactions**
     - [ ] Click to open Task Detail Modal
     - [ ] (Advanced) Drag & Drop to reschedule
@@ -38,9 +40,9 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
     - [ ] Design "Calm" empty state when no tasks exist today
 
 ## Phase 4: Task Management Polish
-- [ ] **Task Card Design**
-    - [ ] Update card styling: White surface, Rounded corners (8-12px), Subtle shadow
-    - [ ] Add "Left color strip" for status/category
+- [x] **Task Card Design**
+    - [x] Update card styling: White surface, Rounded corners (8-12px), Subtle shadow
+    - [x] Add "Left color strip" for status/category
 - [ ] **Task List View**
     - [ ] Verify Filters (All/Pending/Completed) work as expected
     - [ ] Ensure vertical list layout matches wireframes

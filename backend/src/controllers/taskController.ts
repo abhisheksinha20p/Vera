@@ -6,12 +6,16 @@ import Task from '../models/Task';
 const createTaskSchema = z.object({
   title: z.string().min(1, 'Title is required').trim(),
   description: z.string().optional().default(''),
+  startTime: z.coerce.date().optional(),
+  endTime: z.coerce.date().optional(),
 });
 
 const updateTaskSchema = z.object({
   title: z.string().min(1, 'Title is required').trim().optional(),
   description: z.string().optional(),
   isCompleted: z.boolean().optional(),
+  startTime: z.coerce.date().optional(),
+  endTime: z.coerce.date().optional(),
 });
 
 /**
@@ -29,12 +33,24 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
-    const { title, description } = validation.data;
+    let { title, description, startTime, endTime } = validation.data;
+
+    // Default to current time if not provided (Auto-schedule)
+    if (!startTime) {
+      const now = new Date();
+      startTime = now;
+      // Default duration: 1 hour
+      if (!endTime) {
+         endTime = new Date(now.getTime() + 60 * 60 * 1000);
+      }
+    }
 
     const task = new Task({
       title,
       description,
       userId,
+      startTime,
+      endTime,
     });
 
     await task.save();
