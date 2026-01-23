@@ -1,14 +1,55 @@
+
 version: '3.8'
 
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: vera_mongodb
+  # Backend Service
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vera-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/vera
+      - JWT_SECRET=dev_secret_key_change_in_prod
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+    networks:
+      - vera-network
     restart: always
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vera-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - vera-network
+    restart: always
+
+  # Database Service
+  mongo:
+    image: mongo:6.0
+    container_name: vera-mongo
     ports:
       - "27017:27017"
     volumes:
-      - mongodb_data:/data/db
+      - mongo-data:/data/db
+    networks:
+      - vera-network
+    restart: always
 
 volumes:
-  mongodb_data:
+  mongo-data:
+
+networks:
+  vera-network:
+    driver: bridge

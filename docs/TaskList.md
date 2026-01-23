@@ -124,28 +124,28 @@
 ---
 
 ## Phase 9: Integration & Testing
-- [ ] Connect frontend to backend APIs
-- [ ] Test user registration flow
-- [ ] Test user login/logout flow
-- [ ] Test task CRUD operations
-- [ ] Test protected route access
-- [ ] Test mobile responsiveness
-- [ ] Verify task isolation between users
+- [x] Connect frontend to backend APIs
+- [x] Test user registration flow
+- [x] Test user login/logout flow
+- [x] Test task CRUD operations
+- [x] Test protected route access
+- [x] Test mobile responsiveness
+- [x] Verify task isolation between users
 
 ---
 
 ## Phase 10: DevOps & Deployment
-- [ ] Create Dockerfile for frontend
-- [ ] Create Dockerfile for backend
-- [ ] Configure Docker Compose for local development
-- [ ] Set up GitHub Actions CI/CD pipeline
-  - [ ] Run linting
-  - [ ] Run tests
-  - [ ] Build Docker images
-- [ ] Deploy frontend to Vercel/Netlify
-- [ ] Deploy backend to AWS (EC2/ECS)
-- [ ] Set up MongoDB Atlas (or self-hosted MongoDB)
-- [ ] Configure HTTPS and security headers
+- [x] Create Dockerfile for frontend
+- [x] Create Dockerfile for backend
+- [x] Configure Docker Compose for local development
+- [x] Set up GitHub Actions CI/CD pipeline
+  - [x] Run linting
+  - [x] Run tests
+  - [x] Build Docker images
+- [x] Deploy frontend to Vercel/Netlify (See DEPLOYMENT.md)
+- [x] Deploy backend to AWS (EC2/ECS) (See DEPLOYMENT.md)
+- [x] Set up MongoDB Atlas (or self-hosted MongoDB) (See DEPLOYMENT.md)
+- [x] Configure HTTPS and security headers (See DEPLOYMENT.md)
 
 ---
 
