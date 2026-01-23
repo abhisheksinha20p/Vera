@@ -26,10 +26,10 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
     - [x] Display Task Cards within calendar time slots
     - [x] Differentiate "Time-bound" vs "All-day/Unscheduled" tasks
     - [x] Auto-schedule tasks to "Now" if time not provided
-- [ ] **Interactions**
-    - [ ] Click to open Task Detail Modal
-    - [ ] (Advanced) Drag & Drop to reschedule
-    - [ ] (Advanced) Resize to adjust duration
+- [x] **Interactions**
+    - [x] Click to open Task Detail Modal
+    - [x] (Advanced) Drag & Drop to reschedule
+    - [x] (Advanced) Resize to adjust duration
 
 ## Phase 3: Dashboard Overhaul
 - [ ] **Summary View**
