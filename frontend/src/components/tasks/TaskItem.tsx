@@ -14,7 +14,10 @@ interface TaskItemProps {
 
 export const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete, onEdit }) => {
   return (
-    <div className="group flex items-start space-x-4 rounded-lg border border-gray-100 bg-pure-white p-4 shadow-card transition-all duration-300 hover:shadow-lift hover:-translate-y-1">
+    <div className={cn(
+      "group flex items-start space-x-4 rounded-lg bg-white p-4 shadow-sm border-l-4 transition-all duration-300 hover:shadow-md",
+      task.isCompleted ? "border-green-500 opacity-75" : "border-electric-blue hover:-translate-y-0.5"
+    )}>
       <button
         onClick={() => onToggle(task._id, !task.isCompleted)}
         className={cn(

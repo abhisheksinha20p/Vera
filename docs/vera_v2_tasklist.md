@@ -43,9 +43,9 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
 - [x] **Task Card Design**
     - [x] Update card styling: White surface, Rounded corners (8-12px), Subtle shadow
     - [x] Add "Left color strip" for status/category
-- [ ] **Task List View**
-    - [ ] Verify Filters (All/Pending/Completed) work as expected
-    - [ ] Ensure vertical list layout matches wireframes
+- [x] **Task List View**
+    - [x] Verify Filters (All/Pending/Completed) work as expected
+    - [x] Ensure vertical list layout matches wireframes
 
 ## Phase 5: Components & UI Design
 - [ ] **Modals**
