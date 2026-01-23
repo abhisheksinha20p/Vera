@@ -64,25 +64,31 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
   }), []);
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  const onEventDrop: withDragAndDropProps['onEventDrop'] = useCallback(async ({ event, start, end }) => {
-    const task = (event as any).resource as Task;
+  const onEventDrop: withDragAndDropProps['onEventDrop'] = useCallback(async (args: any) => {
+    const { event, start, end } = args;
+    const task = event.resource as Task;
     try {
       await updateTask(task._id, {
-        startTime: start as Date,
-        endTime: end as Date,
-      } as any); // Cast to any to bypass strict type check for now if interface mismatch exists
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        startTime: start as any,
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        endTime: end as any,
+      } as any);
     } catch (error) {
       console.error('Failed to move task', error);
     }
   }, [updateTask]);
 
-  const onEventResize: withDragAndDropProps['onEventResize'] = useCallback(async ({ event, start, end }) => {
-    const task = (event as any).resource as Task;
+  const onEventResize: withDragAndDropProps['onEventResize'] = useCallback(async (args: any) => {
+    const { event, start, end } = args;
+    const task = event.resource as Task;
     try {
       await updateTask(task._id, {
-        startTime: start as Date,
-        endTime: end as Date,
-      } as any);
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        startTime: start as any,
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        endTime: end as any,
+      } as any); 
     } catch (error) {
       console.error('Failed to resize task', error);
     }
@@ -97,11 +103,14 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
   const handleUpdateTask = async (data: TaskFormData) => {
     if (!editingTask) return;
     try {
+      const formattedStart = data.startTime ? new Date(data.startTime).toISOString() : undefined;
+      const formattedEnd = data.endTime ? new Date(data.endTime).toISOString() : undefined;
+
       await updateTask(editingTask._id, {
           title: data.title,
           description: data.description,
-          startTime: data.startTime ? new Date(data.startTime) : undefined,
-          endTime: data.endTime ? new Date(data.endTime) : undefined,
+          startTime: formattedStart,
+          endTime: formattedEnd,
       });
       setEditingTask(null);
     } catch (error) {
@@ -115,16 +124,15 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
         <DnDCalendar
           localizer={localizer}
           events={events}
-          startAccessor="start"
-          endAccessor="end"
+          startAccessor={"start" as any}
+          endAccessor={"end" as any}
           style={{ height: '100%' }}
           views={['month', 'week', 'day']}
           view={view}
           onView={setView}
           date={date}
           onNavigate={onNavigate}
-          // @ts-expect-error - React Big Calendar types are tricky
-          components={components}
+          components={components as any} 
           onEventDrop={onEventDrop}
           onEventResize={onEventResize}
           onSelectEvent={onSelectEvent}
