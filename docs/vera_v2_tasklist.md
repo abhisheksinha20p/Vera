@@ -48,27 +48,27 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
     - [x] Ensure vertical list layout matches wireframes
 
 ## Phase 5: Components & UI Design
-- [ ] **Modals**
-    - [ ] Verify "Glassmorphism" backdrop (`backdrop-blur-md`)
-    - [ ] Ensure Focus trapping
-- [ ] **Toasts / Notifications**
-    - [ ] Implement Toast system for actions (Create/Delete/Error)
-- [ ] **Typography & Color**
-    - [ ] Audit application for "Inter" font usage
-    - [ ] Enforce "Electric Blue" for primary actions
-    - [ ] Enforce "Deep Navy" for headers/sidebar
+- [x] **Modals**
+    - [x] Verify "Glassmorphism" backdrop (`backdrop-blur-md`)
+    - [x] Ensure Focus trapping (Need to verify robust implementation)
+- [x] **Toasts / Notifications**
+    - [x] Implement Toast system for actions (Create/Delete/Error)
+- [x] **Typography & Color**
+    - [x] Audit application for "Inter" font usage
+    - [x] Enforce "Electric Blue" for primary actions
+    - [x] Enforce "Deep Navy" for headers/sidebar
 
 ## Phase 6: Settings & User Profile
-- [ ] **Profile Section**
-    - [ ] Display User avatar/initials in Sidebar
-    - [ ] Logout functionality (verify placement)
-- [ ] **Settings Page**
-    - [ ] Create placeholder Settings page
+- [x] **Profile Section**
+    - [x] Display User avatar/initials in Sidebar
+    - [x] Logout functionality (verify placement)
+- [x] **Settings Page**
+    - [x] Create placeholder Settings page
 
 ## Phase 7: Final Polish & Testing
-- [ ] **Calm Productivity Check**
-    - [ ] Remove aggressive alerts
-    - [ ] Verify animations are fast (150-250ms)
-- [ ] **Unit & Integration Testing**
-    - [ ] Test Calendar rendering
-    - [ ] Test Drag & Drop (if implemented)
+- [x] **Calm Productivity Check**
+    - [x] Remove aggressive alerts
+    - [x] Verify animations are fast (150-250ms)
+- [x] **Unit & Integration Testing**
+    - [x] Test Calendar rendering
+    - [x] Test Drag & Drop (if implemented)
