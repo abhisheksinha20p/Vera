@@ -1,145 +1,81 @@
-import { useState } from 'react';
+
+import { useState, useMemo } from 'react';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
+import { QuickAdd } from '../components/dashboard/QuickAdd';
 import { TaskList } from '../components/tasks/TaskList';
-import { TaskForm } from '../components/tasks/TaskForm';
-import type { TaskFormData } from '../components/tasks/TaskForm';
-import { Modal } from '../components/common/Modal';
-import { Button } from '../components/common/Button';
-import type { Task } from '../services/taskService';
-import { Plus } from 'lucide-react';
 import { useTasks } from '../hooks/useTasks';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon, CheckCircle2 } from 'lucide-react';
 
 const Dashboard = () => {
-  const { tasks, isLoading, createTask, updateTask, deleteTask, toggleTaskStatus } = useTasks();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
-  const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all');
+  const { tasks, isLoading, createTask, toggleTaskStatus, deleteTask } = useTasks();
 
-  const handleCreateTask = async (data: TaskFormData) => {
-    try {
-      await createTask(data);
-      setIsModalOpen(false);
-    } catch (error) {
-      // Error handled in hook/service, could add toast usage here
-    }
+  const todayDate = format(new Date(), 'EEEE, MMM do');
+
+  const upcomingTasks = useMemo(() => {
+    // Filter pending tasks and specific upcoming logic (e.g. today/tomorrow or just next 5)
+    return tasks
+      .filter(t => !t.isCompleted)
+      .sort((a, b) => {
+          // Sort by start time if available, otherwise created at? 
+          // For now, let's prioritize scheduled tasks
+          if (a.startTime && b.startTime) return new Date(a.startTime).getTime() - new Date(b.startTime).getTime();
+          if (a.startTime) return -1;
+          if (b.startTime) return 1;
+          return 0; 
+      })
+      .slice(0, 5);
+  }, [tasks]);
+
+  const handleQuickAdd = async (title: string) => {
+    await createTask({ title });
   };
-
-  const handleUpdateTask = async (data: TaskFormData) => {
-    if (!editingTask) return;
-    try {
-      await updateTask(editingTask._id, data);
-      setIsModalOpen(false);
-      setEditingTask(null);
-    } catch (error) {
-       // Error handled
-    }
-  };
-
-  const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null);
-
-  const handleDeleteClick = (id: string) => {
-    setDeletingTaskId(id);
-  };
-
-  const confirmDeleteTask = async () => {
-    if (!deletingTaskId) return;
-    await deleteTask(deletingTaskId);
-    setDeletingTaskId(null);
-  };
-
-  const openCreateModal = () => {
-    setEditingTask(null);
-    setIsModalOpen(true);
-  };
-
-  const openEditModal = (task: Task) => {
-    setEditingTask(task);
-    setIsModalOpen(true);
-  };
-
-  const filteredTasks = Array.isArray(tasks) ? tasks.filter((task) => {
-    if (filter === 'pending') return !task.isCompleted;
-    if (filter === 'completed') return task.isCompleted;
-    return true;
-  }) : [];
 
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">My Tasks</h1>
-          <Button onClick={openCreateModal}>
-            <Plus className="mr-2 h-4 w-4" />
-            New Task
-          </Button>
-        </div>
+    <DashboardLayout title="Dashboard">
+      <div className="max-w-4xl mx-auto space-y-8">
+        
+        {/* Header Section */}
+        <header>
+            <h2 className="text-gray-500 text-sm font-medium uppercase tracking-wide">Today</h2>
+            <h1 className="text-3xl font-bold text-midnight-navy mt-1">{todayDate}</h1>
+        </header>
 
-        <div className="flex space-x-2 border-b border-gray-200 pb-1">
-          {(['all', 'pending', 'completed'] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${
-                filter === f
-                  ? 'bg-white text-blue-600 border-b-2 border-blue-600'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
-            </button>
-          ))}
-        </div>
+        {/* Quick Add */}
+        <section>
+            <QuickAdd onAdd={handleQuickAdd} />
+        </section>
 
-        <TaskList
-          tasks={filteredTasks}
-          isLoading={isLoading}
-          onToggle={toggleTaskStatus}
-          onDelete={handleDeleteClick}
-          onEdit={openEditModal}
-        />
-
-        <Modal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          title={editingTask ? 'Edit Task' : 'Create New Task'}
-        >
-          <TaskForm
-            onSubmit={editingTask ? handleUpdateTask : handleCreateTask}
-            defaultValues={
-              editingTask
-                ? { title: editingTask.title, description: editingTask.description || '' }
-                : undefined
-            }
-            onCancel={() => setIsModalOpen(false)}
-          />
-        </Modal>
-
-        <Modal
-          isOpen={!!deletingTaskId}
-          onClose={() => setDeletingTaskId(null)}
-          title="Delete Task"
-        >
-          <div className="space-y-4">
-            <p className="text-gray-600">
-              Are you sure you want to delete this task? This action cannot be undone.
-            </p>
-            <div className="flex justify-end space-x-2">
-              <Button
-                variant="ghost"
-                onClick={() => setDeletingTaskId(null)}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="primary" // We could add a destructive variant later, but primary is fine for now or style manually
-                className="bg-red-600 hover:bg-red-700 focus:ring-red-500"
-                onClick={confirmDeleteTask}
-              >
-                Delete
-              </Button>
+        {/* Upcoming Tasks */}
+        <section className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-gray-900 flex items-center">
+                    <CalendarIcon className="h-5 w-5 mr-2 text-electric-blue" />
+                    Upcoming Tasks
+                </h3>
             </div>
-          </div>
-        </Modal>
+            
+            {upcomingTasks.length > 0 ? (
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <TaskList 
+                        tasks={upcomingTasks} 
+                        isLoading={isLoading} 
+                        onToggle={toggleTaskStatus}
+                        onDelete={deleteTask} 
+                        onEdit={() => {}} // simplified for dashboard
+                    />
+                </div>
+            ) : (
+                <div className="text-center py-12 bg-white rounded-xl border border-gray-100 border-dashed">
+                    <div className="mx-auto h-12 w-12 text-gray-300 mb-3">
+                        <CheckCircle2 className="h-full w-full" />
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-900">All caught up!</h3>
+                    <p className="text-gray-500">No upcoming tasks for today.</p>
+                </div>
+            )}
+        </section>
+
       </div>
     </DashboardLayout>
   );
