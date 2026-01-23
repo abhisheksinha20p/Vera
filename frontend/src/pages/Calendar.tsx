@@ -69,9 +69,7 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
     const task = event.resource as Task;
     try {
       await updateTask(task._id, {
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         startTime: start as any,
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         endTime: end as any,
       } as any);
     } catch (error) {
@@ -84,9 +82,7 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
     const task = event.resource as Task;
     try {
       await updateTask(task._id, {
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         startTime: start as any,
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         endTime: end as any,
       } as any); 
     } catch (error) {
@@ -124,7 +120,9 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
         <DnDCalendar
           localizer={localizer}
           events={events}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           startAccessor={"start" as any}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           endAccessor={"end" as any}
           style={{ height: '100%' }}
           views={['month', 'week', 'day']}
@@ -132,6 +130,7 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
           onView={setView}
           date={date}
           onNavigate={onNavigate}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           components={components as any} 
           onEventDrop={onEventDrop}
           onEventResize={onEventResize}
