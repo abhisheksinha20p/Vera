@@ -66,9 +66,9 @@ Based on [Comprehensive Design Document](vera_new_design_document.md)
     - [x] Create placeholder Settings page
 
 ## Phase 7: Final Polish & Testing
-- [ ] **Calm Productivity Check**
-    - [ ] Remove aggressive alerts
-    - [ ] Verify animations are fast (150-250ms)
-- [ ] **Unit & Integration Testing**
-    - [ ] Test Calendar rendering
-    - [ ] Test Drag & Drop (if implemented)
+- [x] **Calm Productivity Check**
+    - [x] Remove aggressive alerts
+    - [x] Verify animations are fast (150-250ms)
+- [x] **Unit & Integration Testing**
+    - [x] Test Calendar rendering
+    - [x] Test Drag & Drop (if implemented)
