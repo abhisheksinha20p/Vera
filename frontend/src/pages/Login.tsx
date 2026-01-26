@@ -7,6 +7,8 @@ import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/common/Card';
+import logo from '../assets/logo.png';
+
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -43,7 +45,11 @@ const Login = () => {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
+          <div className="flex justify-center mb-4">
+            <img src={logo} alt="Vera Logo" className="h-16 w-auto" />
+          </div>
           <CardTitle className="text-3xl font-extrabold text-gray-900">Sign in to Vera</CardTitle>
+
           <CardDescription className="mt-2 text-gray-600">
             Or{' '}
             <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
