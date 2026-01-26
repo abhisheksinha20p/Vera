@@ -8,6 +8,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
+import logo from "../../assets/logo.png";
 
 interface SidebarProps {
   className?: string;
@@ -29,6 +30,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     >
       {/* Logo */}
       <div className="flex items-center h-16 px-6 border-b border-white/10">
+        <img src={logo} alt="Vera Logo" className="h-8 w-auto mr-3" />
         <span className="text-xl font-bold tracking-wide">Vera</span>
       </div>
 
